@@ -22,8 +22,9 @@ def fib(n):
     else:
         # Recursive case
         return fib(n-1) + fib(n-2)
+print("Fibonacci Sequence:")
 print(fib(10))
-
+print(fib(14))
 """
 Convert a decimal number to its binary representation
 """
@@ -33,8 +34,10 @@ def to_binary(n):
     # Using Python's built-in bin function to convert decimal to binary
     # and remove the '0b' prefix
     return bin(n).replace("0b", "")
+print("Binary Representation:")
 print(to_binary(10))
-
+print(to_binary(23))
+print(to_binary(256))
 """
 Data Analysis on Bellevue Hospital Admissions
 """
@@ -73,7 +76,7 @@ def taskiv():
     top5_professions = df_bellevue['profession'].value_counts().head(5).index.tolist()
     print(top5_professions)
 
-
+print("Results for Exercise 3:")
 print(taski())
 print(taskii())
 print(taskiii())
