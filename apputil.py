@@ -2,14 +2,18 @@
 import pandas as pd
 import numpy as np  
 
-# Load the Bellevue Almshouse dataset
+""" 
+Load the Bellevue Almshouse dataset
+"""
 url = 'https://github.com/melaniewalsh/Intro-Cultural-Analytics/raw/master/book/data/bellevue_almshouse_modified.csv'
 
 df_bellevue = pd.read_csv(url)
 df_bellevue.head()
 
 
-"Fibonacci sequence starting with 0 and 1"
+"""
+Fibonacci sequence starting with 0 and 1
+"""
 def fib(n):
     if n <= 0:
         return 0
@@ -20,7 +24,9 @@ def fib(n):
         return fib(n-1) + fib(n-2)
 print(fib(10))
 
-"Convert a decimal number to its binary representation"
+"""
+Convert a decimal number to its binary representation
+"""
 def to_binary(n):
     if n < 0:
         return "Input should be a non-negative integer."
@@ -29,16 +35,20 @@ def to_binary(n):
     return bin(n).replace("0b", "")
 print(to_binary(10))
 
-"Data Analysis on Bellevue Hospital Admissions"
-
-"Return a list of column names sorted by the number of missing values in ascending order"
+"""
+Data Analysis on Bellevue Hospital Admissions
+"""
+"""
+Return a list of column names sorted by the number of missing values in ascending order
+"""
 def taski():
     missing_count = df_bellevue.isnull().sum()
     sorted_columns = missing_count.sort_values().index.tolist()
     print(sorted_columns)
 
 
-"Calculate the total number of admissions per year and return a DataFrame with 'Year' and 'Total_Admissions'"
+"""Calculate the total number of admissions per year and return a DataFrame with 'Year' and 'Total_Admissions
+"""
 def taskii():
     
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
@@ -47,13 +57,17 @@ def taskii():
     print(df_yearly)
 
 
-"Calculate the average age of patients grouped by gender"
+"""
+Calculate the average age of patients grouped by gender
+"""
 def taskiii():
     avg_age_by_gender = df_bellevue.groupby('gender')['age'].mean().reset_index(name='avg_age')
     print(avg_age_by_gender)
 
 
-"Identify the top 5 most common professions among the patients"
+""" 
+    Identify the top 5 most common professions among the patients
+"""
 def taskiv():
     # 
     top5_professions = df_bellevue['profession'].value_counts().head(5).index.tolist()
