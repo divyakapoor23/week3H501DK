@@ -47,6 +47,7 @@ Return a list of column names sorted by the number of missing values in ascendin
 def task_1():
     missing_count = df_bellevue.isnull().sum()
     sorted_columns = missing_count.sort_values().index.tolist()
+    return sorted_columns
     print(sorted_columns)
 
 
@@ -56,6 +57,7 @@ def task_2():
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
     df_bellevue['Year'] = df_bellevue['date_in'].dt.year
     df_yearly = df_bellevue.groupby('Year').size().reset_index(name='Total_Admissions')
+    return df_yearly
     print(df_yearly)
 
 
@@ -64,6 +66,7 @@ Calculate the average age of patients grouped by gender
 """
 def task_3():
     avg_age_by_gender = df_bellevue.groupby('gender')['age'].mean().reset_index(name='avg_age')
+    return avg_age_by_gender
     print(avg_age_by_gender)
 
 
@@ -72,7 +75,8 @@ def task_3():
 """
 def task_4():
     top5_professions = df_bellevue['profession'].value_counts().head(5).index.tolist()
-    print(top5_professions)
+    return top5_professions
+    print(top5_professions) 
 
 print("Results for Exercise 3:")
 print(task_1())
