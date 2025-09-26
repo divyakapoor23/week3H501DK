@@ -55,8 +55,8 @@ def task_1():
 """
 def task_2():
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
-    df_bellevue['Year'] = df_bellevue['date_in'].dt.year
-    df_yearly = df_bellevue.groupby('Year').size().reset_index(name='Total_Admissions')
+    df_bellevue['year'] = df_bellevue['date_in'].dt.year
+    df_yearly = df_bellevue.groupby('year').size().reset_index(name='total_admissions')
     return df_yearly
     print(df_yearly)
 
