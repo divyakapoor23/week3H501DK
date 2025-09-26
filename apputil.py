@@ -44,7 +44,7 @@ Data Analysis on Bellevue Hospital Admissions
 """
 Return a list of column names sorted by the number of missing values in ascending order
 """
-def taski():
+def task_1():
     missing_count = df_bellevue.isnull().sum()
     sorted_columns = missing_count.sort_values().index.tolist()
     print(sorted_columns)
@@ -52,8 +52,7 @@ def taski():
 
 """Calculate the total number of admissions per year and return a DataFrame with 'Year' and 'Total_Admissions
 """
-def taskii():
-    
+def task_2():
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
     df_bellevue['Year'] = df_bellevue['date_in'].dt.year
     df_yearly = df_bellevue.groupby('Year').size().reset_index(name='Total_Admissions')
@@ -63,7 +62,7 @@ def taskii():
 """
 Calculate the average age of patients grouped by gender
 """
-def taskiii():
+def task_3():
     avg_age_by_gender = df_bellevue.groupby('gender')['age'].mean().reset_index(name='avg_age')
     print(avg_age_by_gender)
 
@@ -71,13 +70,12 @@ def taskiii():
 """ 
     Identify the top 5 most common professions among the patients
 """
-def taskiv():
-    # 
+def task_4():
     top5_professions = df_bellevue['profession'].value_counts().head(5).index.tolist()
     print(top5_professions)
 
 print("Results for Exercise 3:")
-print(taski())
-print(taskii())
-print(taskiii())
-print(taskiv())
+print(task_1())
+print(task_2())
+print(task_3())
+print(task_4())
