@@ -14,17 +14,17 @@ df_bellevue.head()
 """
 Fibonacci sequence starting with 0 and 1
 """
-def fib(n):
+def fibonacci(n):
     if n <= 0:
         return 0
     elif n == 1:
         return 1
     else:
         # Recursive case
-        return fib(n-1) + fib(n-2)
+        return fibonacci(n-1) + fibonacci(n-2)
 print("Fibonacci Sequence:")
-print(fib(10))
-print(fib(14))
+print(fibonacci(10))
+print(fibonacci(14))
 """
 Convert a decimal number to its binary representation
 """
