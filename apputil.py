@@ -45,8 +45,9 @@ Data Analysis on Bellevue Hospital Admissions
 Return a list of column names sorted by the number of missing values in ascending order
 """
 def task_1():
-    rc = [col for col in df_bellevue.columns if col !='year']
+    rc = [col for col in df_bellevue.columns if col != 'year']
     missing_count = df_bellevue[rc].isnull().sum()
+    # Sort by missing count, then by original column order
     sorted_columns = sorted(rc, key=lambda x: (missing_count[x], rc.index(x)))
     return sorted_columns
     print(sorted_columns)
