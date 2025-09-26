@@ -44,13 +44,16 @@ Data Analysis on Bellevue Hospital Admissions
 """
 Return a list of column names sorted by the number of missing values in ascending order
 """
+# 1. Get the original column order indices
+original_order = {col: i for i, col in enumerate(df_bellevue.columns)}
+
 def task_1():
     rc = [col for col in df_bellevue.columns if col != 'year']
     missing_count = df_bellevue[rc].isnull().sum()
-    # Sort by missing count, then by original column order
-    sorted_columns = sorted(rc, key=lambda x: (missing_count[x], rc.index(x)))
+
+    # Use the original index from the full df_bellevue.columns as the tie-breaker
+    sorted_columns = sorted(rc, key=lambda x: (missing_count[x], original_order[x]))
     return sorted_columns
-    print(sorted_columns)
 
 
 """Calculate the total number of admissions per year and return a DataFrame with 'Year' and 'Total_Admissions
