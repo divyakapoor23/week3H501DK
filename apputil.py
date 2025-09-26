@@ -45,7 +45,8 @@ Data Analysis on Bellevue Hospital Admissions
 Return a list of column names sorted by the number of missing values in ascending order
 """
 def task_1():
-    missing_count = df_bellevue.isnull().sum()
+    rc = [col for col in df_bellevue.columns if col not in ['year']]
+    missing_count = df_bellevue[rc].isnull().sum()
     sorted_columns = missing_count.sort_values().index.tolist()
     return sorted_columns
     print(sorted_columns)
@@ -65,7 +66,7 @@ def task_2():
 Calculate the average age of patients grouped by gender
 """
 def task_3():
-    avg_age_by_gender = df_bellevue.groupby('gender')['age'].mean().reset_index(name='avg_age')
+    avg_age_by_gender = df_bellevue.groupby('gender')['age'].mean()
     return avg_age_by_gender
     print(avg_age_by_gender)
 
